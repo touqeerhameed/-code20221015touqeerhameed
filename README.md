@@ -9,7 +9,7 @@ Step to run Application
 
 1. npm install
 2. npm run start
-3. npm run test [to test he unit test]
+3. npm run test [to test the unit test]
 
 Unit Test Result
 ![image](https://user-images.githubusercontent.com/16538676/196051953-59f319f0-a385-4044-bca5-f35dc309d5c6.png)
