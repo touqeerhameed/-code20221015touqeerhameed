@@ -1,14 +1,21 @@
 # BMI Calculator Up and running with unit test
 
-Applicaion pure in typescript
+Applicaion pure in typescript 
+npm version 8.19.2
+node version v14.18.0
+tsc version 4.8.4
+
 Step to run Application
 
 1. npm install
-2. tsc-w [open terminal and type command]
-3. npx nodemon dist [open another terminal run the command,see the in terminal]
-4. npm test [to test he unit test]
+2. npm run start
+3. npm run test [to test he unit test]
 
-Unit Test
+Unit Test Result
+![image](https://user-images.githubusercontent.com/16538676/196051953-59f319f0-a385-4044-bca5-f35dc309d5c6.png)
 
-![image](https://user-images.githubusercontent.com/16538676/196000949-a643715f-c59c-4f9b-a667-a1245e6376b8.png)
+BMI Calculator [4 record]
+![image](https://user-images.githubusercontent.com/16538676/196051968-0ed2976e-07d2-4cd6-87c9-648d09f000c4.png)
 
+BMI Calculator [101220 record]
+![image](https://user-images.githubusercontent.com/16538676/196052061-8e38c3ab-5bc7-4719-a65a-afab61d630df.png)
