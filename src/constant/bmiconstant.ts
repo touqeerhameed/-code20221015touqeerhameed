@@ -37,6 +37,7 @@ const BMITable: BMITableType[] = [
   },
 ];
 
-const DivideBy = 100;
+const BASE_URL = 'http://localhost:4500';
+const BMI_END_POINT = '/api/getbmi';
 
-export { BMITable, DivideBy };
+export { BMITable, BASE_URL, BMI_END_POINT };

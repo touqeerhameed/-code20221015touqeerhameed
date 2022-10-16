@@ -1,40 +1,28 @@
-//import { BMICalculator } from '../service/bmiservice';
 const request = require('supertest');
 import { BMITableType } from '../Type/type';
 import { inRange, matchBMI, getBMI } from '../util/helper';
 import { mockRequest, mockResponse } from './mockdata';
+import { BASE_URL, BMI_END_POINT } from '../constant/bmiconstant';
 
-// describe('Functional  Test', () => {
-//   test('Calculate BMI of mockData', () => {
-//     expect(BMICalculator(mockRequest)).toStrictEqual(mockResponse);
-//   });
-
-// });
 describe('API Test', () => {
   test('Post /api/getbmi without body', async () => {
-    await request('http://localhost:4500').post('/api/getbmi').expect(400);
+    await request(BASE_URL).post(BMI_END_POINT).expect(400);
   });
 
   test('POST /api/getbmi with body', async () => {
-    await request('http://localhost:4500')
-      .post('/api/getbmi')
-      .send(mockRequest)
-      .expect(200);
+    await request(BASE_URL).post(BMI_END_POINT).send(mockRequest).expect(200);
   });
 
   test('POST /api/getbmi with body', async () => {
-    await request('http://localhost:4500')
-      .post('/api/getbmi')
-      .send(mockRequest)
-      .expect(200);
+    await request(BASE_URL).post(BMI_END_POINT).send(mockRequest).expect(200);
   });
 
   test('POST /api/getbmi Check response', async () => {
-    let response = await request('http://localhost:4500')
-      .post('/api/getbmi')
+    let response = await request(BASE_URL)
+      .post(BMI_END_POINT)
       .send(mockRequest);
 
-    let result = JSON.parse(response.text).bmiResult;
+    const result = JSON.parse(response.text).bmiResult;
     expect(result).toStrictEqual(mockResponse);
   });
 });
@@ -46,11 +34,13 @@ describe('Unit Test Helper function', () => {
     const max: number = 24.9;
     expect(inRange(value, min, max)).toEqual(true);
   });
+
   test('Get BMI from formula', () => {
     const heightCm: number = 150;
     const weightKg: number = 85.7;
     expect(getBMI(heightCm, weightKg)).toEqual(38.1);
   });
+
   test('Get BMI Table record', () => {
     const bmiValue: number = 38.1;
     const response: BMITableType = {
