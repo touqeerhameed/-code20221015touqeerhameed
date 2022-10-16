@@ -2,6 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 import { BMIType, BMITableType } from './Type/type';
 import { matchBMI, getBMI } from './util/helper';
+import {
+  BMI_END_POINT,
+  SUCCESS_STATUS,
+  FAILURE_STATUS,
+} from './constant/bmiconstant';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -9,7 +14,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use(express.json());
 
-app.post('/api/getbmi', (req: any, res: any) => {
+app.post(BMI_END_POINT, (req: any, res: any) => {
   try {
     const bmirowdata: BMIType[] = req.body;
 
@@ -27,12 +32,12 @@ app.post('/api/getbmi', (req: any, res: any) => {
       };
     });
 
-    res.status(200).json({
+    res.status(SUCCESS_STATUS).json({
       success: true,
       bmiResult: bmiResponse,
     });
   } catch (error) {
-    res.status(400).json({
+    res.status(FAILURE_STATUS).json({
       success: false,
       bmiResult: 'error found',
     });

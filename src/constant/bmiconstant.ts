@@ -40,4 +40,7 @@ const BMITable: BMITableType[] = [
 const BASE_URL = 'http://localhost:4500';
 const BMI_END_POINT = '/api/getbmi';
 
-export { BMITable, BASE_URL, BMI_END_POINT };
+const SUCCESS_STATUS = 200;
+const FAILURE_STATUS = 400;
+
+export { BMITable, BASE_URL, BMI_END_POINT, SUCCESS_STATUS, FAILURE_STATUS };
