@@ -4,7 +4,9 @@ import { BMIType, BMITableType } from './Type/type';
 import { matchBMI, getBMI } from './util/helper';
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '50mb' }));
+
 app.use(express.json());
 
 app.post('/api/getbmi', (req: any, res: any) => {

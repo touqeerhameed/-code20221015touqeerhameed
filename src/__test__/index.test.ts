@@ -1,24 +1,43 @@
 //import { BMICalculator } from '../service/bmiservice';
-import { BMITableType } from 'Type/type';
+const request = require('supertest');
+import { BMITableType } from '../Type/type';
 import { inRange, matchBMI, getBMI } from '../util/helper';
-// import {
-//   mockRequest,
-//   mockResponse,
-//   mockAbnormalRequest,
-//   mockAbnormalResponse,
-// } from './mockdata';
+import { mockRequest, mockResponse } from './mockdata';
 
-// describe('Functional Test BMI Calculator', () => {
+// describe('Functional  Test', () => {
 //   test('Calculate BMI of mockData', () => {
 //     expect(BMICalculator(mockRequest)).toStrictEqual(mockResponse);
 //   });
 
-//   test('Test Abnormal mockData', () => {
-//     expect(BMICalculator(mockAbnormalRequest)).toStrictEqual(
-//       mockAbnormalResponse
-//     );
-//   });
 // });
+describe('API Test', () => {
+  test('Post /api/getbmi without body', async () => {
+    await request('http://localhost:4500').post('/api/getbmi').expect(400);
+  });
+
+  test('POST /api/getbmi with body', async () => {
+    await request('http://localhost:4500')
+      .post('/api/getbmi')
+      .send(mockRequest)
+      .expect(200);
+  });
+
+  test('POST /api/getbmi with body', async () => {
+    await request('http://localhost:4500')
+      .post('/api/getbmi')
+      .send(mockRequest)
+      .expect(200);
+  });
+
+  test('POST /api/getbmi Check response', async () => {
+    let response = await request('http://localhost:4500')
+      .post('/api/getbmi')
+      .send(mockRequest);
+
+    let result = JSON.parse(response.text).bmiResult;
+    expect(result).toStrictEqual(mockResponse);
+  });
+});
 
 describe('Unit Test Helper function', () => {
   test('Get Range according to data', () => {
