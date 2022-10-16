@@ -1,3 +1,4 @@
+const fs = require('fs');
 import { BMITable } from '../constant/bmiconstant';
 import { BMITableType, BMIType } from '../Type/type';
 
@@ -26,4 +27,17 @@ const matchBMI = function (BMIValue: number): BMITableType {
   return result;
 };
 
-export { matchBMI, getBMI };
+function saveJsonResult(bmiresult: BMIType[]) {
+  var jsonContent = JSON.stringify(bmiresult);
+
+  fs.writeFile('bmioutput.json', jsonContent, 'utf8', function (err: any) {
+    if (err) {
+      console.log('An error occured while writing JSON Object to File.');
+      return console.log(err);
+    }
+
+    console.log('JSON file has been saved.');
+  });
+}
+
+export { inRange, matchBMI, getBMI, saveJsonResult };
