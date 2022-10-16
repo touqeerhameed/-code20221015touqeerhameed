@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "test": "jest",
-    "deploy": "npm run build && gh-pages -d dist"
+    "start": "npx ts-node src/app.ts",
+    "test": "jest"
   },
   "dependencies": {
     "body-parser": "^1.20.1",
